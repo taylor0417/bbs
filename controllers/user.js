@@ -30,24 +30,34 @@ exports.handleSignin = (req, res) => {
         message:'邮箱不存在!'
       });
     }
-    const sqlstr = 'SELECT * FROM `users` WHERE `email` =? AND `password`=?';
-    connection.query(sqlstr,[body.email,body.password],(err, results) => {
-      if(err) {
-        return res.send({
-          code:500,
-          message:err.message
-        });
-      }
-      if(!results[0]) {
-        return res.send({
-          code:2,
-          message:'密码错误!'
-        });
-      }
-      res.send({
-        code:200,
-        message:'可以登录了'
+    // const sqlstr = 'SELECT * FROM `users` WHERE `email` =? AND `password`=?';
+    // connection.query(sqlstr,[body.email,body.password],(err, results) => {
+      // if(err) {
+      //   return res.send({
+      //     code:500,
+      //     message:err.message
+      //   });
+      // }
+      // if(!results[0]) {
+      //   return res.send({
+      //     code:2,
+      //     message:'密码错误!'
+      //   });
+      // }
+      // res.send({
+      //   code:200,
+      //   message:'可以登录了'
+      // });
+    // });
+    if(results[0].password !== body.password) {
+      return res.send({
+        code:2,
+        message:'密码错误!'
       });
+    }
+    res.send({
+      code:200,
+      message:'可以登录了'
     });
   });
 }
