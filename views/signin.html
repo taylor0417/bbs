@@ -39,6 +39,13 @@
     </div>
     <script src="/node_modules/jquery/dist/jquery.js"></script>
     <script>
+      $('#signin_form').submit(function(e){
+        e.preventDefault();
+        var formData = $(this).serialize();
+        $.post('/handleSignin', formData, function(data){
+          console.log(data);
+        });
+      })
     </script>
 </body>
 
