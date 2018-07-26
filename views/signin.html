@@ -43,7 +43,7 @@
         e.preventDefault();
         var formData = $(this).serialize();
         $.post('/handleSignin', formData, function(data){
-          console.log(data);
+          console.log(data.message);
         });
       })
     </script>
