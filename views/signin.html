@@ -43,7 +43,20 @@
         e.preventDefault();
         var formData = $(this).serialize();
         $.post('/handleSignin', formData, function(data){
-          console.log(data.message);
+          switch (data.code) {
+            case 1:
+              alert(data.message)
+              break;
+            case 2:
+              alert(data.message)
+              break;
+            case 500:
+              alert(data.message)
+              break;
+            case 200:
+              window.location.href = '/'
+              break;
+          }
         });
       })
     </script>
