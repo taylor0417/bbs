@@ -1,9 +1,17 @@
 const express = require('express');
 const router = require('./router');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 
 
 const app = express();
+//配置session包
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 //配置模板引擎
 app.engine('html', require('express-art-template'));
 //配置静态资源

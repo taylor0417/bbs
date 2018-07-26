@@ -49,6 +49,8 @@ exports.handleSignin = (req, res) => {
         message:'密码错误!'
       });
     }
+    //存储正确的邮箱和密码
+    req.session.user = results[0];
     res.send({
       code:200,
       message:'可以登录了'
