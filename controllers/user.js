@@ -1,13 +1,7 @@
 //mysql
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'maxin0608',
-  database : 'bbs'
-});
+const connection = require('../tools/db_config');
 
-connection.connect();
+
 
 //渲染用户登录的方法
 exports.showSignin = (req, res) => {
